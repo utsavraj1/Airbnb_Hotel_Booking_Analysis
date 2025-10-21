@@ -66,32 +66,15 @@ The dataset includes:
 
 ---
 
-## Python Code Example
+## Key Insights
+- Room types and property types vary by neighborhood
+- Manhattan has highest average prices
+- Review ratings vary by neighborhood and room type
+- Verified hosts tend to get higher reviews
+- Hosts with more listings have higher availability
 
-```python
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-# Load dataset
-DATA_PATH = "Airbnb Dataset.xlsx"
-df = pd.read_excel(DATA_PATH)
-
-# Data Cleaning
-df.drop_duplicates(inplace=True)
-df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
-
-# Example: Average Review Rate Number (ARRN)
-ARRN = df.groupby(['neighbourhood_group', 'room_type'])['review_rate_number'].mean().to_frame()
-ARRN.rename(columns={'review_rate_number':'average_review_rate'}, inplace=True)
-display(ARRN)
-
-# Plot ARRN
-ARRN_reset = ARRN.reset_index()
-plt.figure(figsize=(12,8))
-sns.barplot(data=ARRN_reset, x='neighbourhood_group', y='average_review_rate', hue='room_type', errorbar=None)
-plt.xlabel('Neighbourhood Group')
-plt.ylabel('Average Review Rate')
-plt.title('Average Review Rate for each Room/Property Type in each Neighbourhood Group')
-plt.legend(title='Room Type')
-plt.show()
+## Author
+Utsav Raj   
+GitHub: https://github.com/utsavraj1
+LinkedIn: https://www.linkedin.com/in/utsavraj123/
+Email: utshavraj.ur321@gmail.com
